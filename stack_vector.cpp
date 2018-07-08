@@ -1,47 +1,53 @@
 #include <iostream>
 #include  <vector>
-#include <Windows.h>
-using namespace std;
+#include <string>
 
-template <typename T>
+using namespace std;
+//스택이 비어있는지 검사하는 isEmpty
+//스택 사이즈 검사
+//스택 클리어할때 pop을 사이즈 만큼 해서 클리어 하지 말것.
+
 class stack {
 private:
-	vector<T> v;
+	vector<string> v;
 	int count = 0;
 
 public:
-	stack() {}  //생성자가 여러개일 수 있는가? // 여러개라면 넘겨받는 ㄴ일무ㅏㅣㅗ물나췌
+	stack() {}
 	~stack() {}
-	T temp;
+	string	temp;
 	void pop();
 	void push();
-	void show_stack();
+	void showStack();
+	bool isEmpty();
+	void stackSize();
+	void stackClear();
 };
 
-template <typename T>
-void stack<T>::pop() {
+
+void stack::pop() {
 	if (v.empty()) {
-		cout << "there is notting in stack";
+		cout << "there is notting in stack\n";
 	}
 	else {
 		temp = v.back();
 		v.pop_back();
-		cout << temp;
 		count--;
 	}
 }
 
-template <typename T>
-void stack<T>::push() {
-	T vin;
-	cin >> vin;
+void stack::push() {
+	string vin;
+	cin.ignore();
+	getline(cin, vin);
+	//cin >> vin;
+	// cout << vin;
 	v.push_back(vin);
 	count++;
 }
 
-template <typename T>
-void stack<T>::show_stack() {
-	cout << "현재 스택 ->";
+void stack::showStack() {
+	cout << "stack ->";
 	for (int i = 0; i < count; i++) {
 		cout << v.at(i) << "-";
 	}
@@ -49,79 +55,52 @@ void stack<T>::show_stack() {
 
 }
 
+bool stack::isEmpty() {
+	if (count == 0)
+		return true;
+	else
+		return false;
 
+}
+
+void stack::stackSize() {
+	cout << "size is " << count << endl;
+}
+
+void stack::stackClear() {
+	v.clear();
+	count = 0;
+}
 
 
 int main() {
 
-	int in;
-	char menu;
-
-	//여기로 점프
-here1:
-	cout << "select the data type\n 1.int 2.char 3.double\n";
-	cin >> menu;
-
-	if (menu == '1') {
-		stack<int> s;
-		while (1) {
-			cout << "1.push or 2.pop\n";
-			cin >> menu;
-
-			if (menu == '1') {
-				s.push();
-				s.show_stack();
-			}
-			else if (menu == '2') {
-				s.pop();
-				s.show_stack();
-			}
+	int menu;
+	stack s;
+	while (1) {
+		cout << "1.push or 2.pop or 3.isEmpty 4.stackSize 5.stackClear";
+		cin >> menu;
+		if (menu == 1) {
+			s.push();
+			s.showStack();
 		}
-	}
-	else if (menu == '2') {
-		stack<char> s;
-		while (1) {
-			cout << "1.push or 2.pop\n";
-			cin >> menu;
-
-			if (menu == '1') {
-				s.push();
-				s.show_stack();
-			}
-			else if (menu == '2') {
-				s.pop();
-				s.show_stack();
-			}
+		else if (menu == 2) {
+			s.pop();
+			s.showStack();
 		}
-	}
-	else if (menu == 3) {
-		stack<double> s;
-		while (1) {
-			cout << "1.push or 2.pop\n";
-			cin >> menu;
-
-			if (menu == '1') {
-				s.push();
-				s.show_stack();
-			}
-			else if (menu == '2') {
-				s.pop();
-				s.show_stack();
-			}
+		else if (menu == 3) {
+			cout << s.isEmpty() << endl;
 		}
+		else if (menu == 4) {
+			s.stackSize();
+		}
+		else if (menu == 5) {
+			s.stackClear();
+			s.showStack();
+		}
+
 	}
-	else {
-		goto here1;
-	}
-
-
-
-
-
-
-
 
 	//system("pause");
 	return 0;
 }
-
