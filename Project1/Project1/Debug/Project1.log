@@ -1,3 +1,1 @@
-﻿  stack.cpp
-c:\users\ingee\documents\tyche\data_structure\project1\project1\stack.cpp(78): warning C4715: 'stack<int>::pop': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  Project1.vcxproj -> C:\Users\Ingee\Documents\Tyche\data_structure\Project1\Debug\Project1.exe
+﻿  Project1.vcxproj -> C:\Users\Ingee\Documents\Tyche\data_structure\Project1\Debug\Project1.exe

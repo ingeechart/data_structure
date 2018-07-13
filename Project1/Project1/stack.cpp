@@ -97,14 +97,14 @@ bool stack<T>::isEmpty() {
 template <class T>
 void stack<T>::showStack(){
 
-	new node<T> *temp = this->topNode;
+	 node<T> *temp = this->topNode;
 
-	for (int i = 0; i < top, i++) {
-		cout << temp->data; << " ";
+	 for (int i = 0; i < top; i++) {
+
+		cout << temp->data << " ";
+		temp = temp->prev;
 
 	}
-	
-
 
 }
 int main(void) {
@@ -123,9 +123,11 @@ int main(void) {
 			
 			cin >> temp;
 			stack.push(temp);
+			stack.showStack();
 		}
 		else if (pick == 2) {
 			temp = stack.pop();
+			stack.showStack();
 		}
 		
 		cout << endl;
